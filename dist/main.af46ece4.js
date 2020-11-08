@@ -117,146 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"assets/1.png":[function(require,module,exports) {
-module.exports = "/1.9be96cb3.png";
-},{}],"model.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.model = void 0;
-
-var _ = _interopRequireDefault(require("./assets/1.png"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var model = [{
-  type: 'title',
-  value: 'Конструктор сайтов на чистом JavaScript',
-  options: {
-    tag: 'h2',
-    styles: {
-      background: 'linear-gradient(to right, #ff0099, #493240)',
-      color: '#fff',
-      padding: '50px 0',
-      'text-align': 'center'
-    }
-  }
-}, {
-  type: 'text',
-  value: 'Создание сайта на чистом JS с использованием сборщика Parcel, <br> создание разметки стилей с помощью объектной модели',
-  options: {
-    styles: {
-      background: 'linear-gradient(to right, #ff0099, #693290)',
-      color: '#fff',
-      padding: '1rem',
-      'font-weight': 'bold',
-      'font-size': '18px'
-    }
-  }
-}, {
-  type: 'image',
-  value: _.default,
-  options: {
-    styles: {
-      padding: '2rem 0',
-      display: 'flex',
-      'justify-content': 'center'
-    },
-    imageStyles: {
-      width: '50%'
-    },
-    alt: 'Это картинка'
-  }
-}, {
-  type: 'columns',
-  value: ['ООП', 'DOM', 'Parcel', 'Classes', 'Modules'],
-  options: {
-    styles: {
-      background: 'linear-gradient(to bottom, #8b2de8, #9b70e0)',
-      color: '#fff',
-      padding: '1rem',
-      'font-weight': 'bold',
-      'font-size': '18px'
-    }
-  }
-}];
-exports.model = model;
-},{"./assets/1.png":"assets/1.png"}],"utils.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.row = row;
-exports.col = col;
-exports.css = css;
-
-function row(content) {
-  var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return "<div class=\"row\" style=\"".concat(styles, "\">").concat(content, "</div>");
-}
-
-function col(content) {
-  return "<div class=\"col-sm\">".concat(content, "</div>");
-}
-
-function css() {
-  var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  var toString = function toString(key) {
-    return "".concat(key, ": ").concat(styles[key]);
-  };
-
-  return Object.keys(styles).map(toString).join(';');
-}
-},{}],"templates.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.templates = void 0;
-
-var _utils = require("./utils.js");
-
-function title(block) {
-  var _block$options = block.options,
-      _block$options$tag = _block$options.tag,
-      tag = _block$options$tag === void 0 ? 'h1' : _block$options$tag,
-      styles = _block$options.styles;
-  return (0, _utils.row)((0, _utils.col)("<".concat(tag, ">").concat(block.value, "</").concat(tag, ">")), (0, _utils.css)(styles));
-}
-
-function text(block) {
-  var styles = block.options.styles;
-  return (0, _utils.row)((0, _utils.col)("<p>".concat(block.value, "</p>")), (0, _utils.css)(styles));
-}
-
-function columns(block) {
-  var styles = block.options.styles;
-  var html = block.value.map(_utils.col).join('');
-  return (0, _utils.row)(html, (0, _utils.css)(styles));
-}
-
-function image(block) {
-  var _block$options2 = block.options,
-      styles = _block$options2.styles,
-      _block$options2$alt = _block$options2.alt,
-      alt = _block$options2$alt === void 0 ? '' : _block$options2$alt,
-      is = _block$options2.imageStyles;
-  return (0, _utils.row)("<img src = \"".concat(block.value, "\" alt=\"").concat(alt, "\" style=\"").concat((0, _utils.css)(is), "\"/>"), (0, _utils.css)(styles));
-}
-
-var templates = {
-  title: title,
-  text: text,
-  image: image,
-  columns: columns
-};
-exports.templates = templates;
-},{"./utils.js":"utils.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -323,30 +184,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/main.css":[function(require,module,exports) {
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"main.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
-"use strict";
-
-var _model = require("./model.js");
-
-var _templates = require("./templates.js");
-
-require("./css/main.css");
-
-var $site = document.querySelector('#site');
-
-_model.model.forEach(function (block) {
-  var toHtml = _templates.templates[block.type];
-
-  if (toHtml) {
-    $site.insertAdjacentHTML('beforeend', toHtml(block));
-  }
-});
-},{"./model.js":"model.js","./templates.js":"templates.js","./css/main.css":"css/main.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -374,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "21709" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46475" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -550,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/src.e31bb0bc.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/main.af46ece4.js.map
