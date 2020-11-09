@@ -1,9 +1,9 @@
-import image from './assets/1.png'
-import { Block } from './classes/blocks'
+import image from './assets/JavaScript-logo.jpg'
+import { TitleBlock, TextBlock, ColumnsBlock, ImageBlock } from './classes/blocks'
 const text = 'Создание сайта на чистом JS с использованием сборщика Parcel, <br> создание разметки стилей с помощью объектной модели';
 
 export const model = [
-   new Block('title', 'Конструктор сайтов на чистом JavaScript', {
+   new TitleBlock('Конструктор сайтов на чистом JavaScript', {
       tag: 'h2',
       styles: {
          background: 'linear-gradient(to right, #ff0099, #493240)',
@@ -12,7 +12,7 @@ export const model = [
          'text-align': 'center'
       }
    }),
-   new Block('text', text, {
+   new TextBlock(text, {
       styles: {
          background: 'linear-gradient(to right, #ff0099, #693290)',
          color: '#fff',
@@ -23,7 +23,7 @@ export const model = [
 
    }),
 
-   new Block('image', image, {
+   new ImageBlock(image, {
       styles: {
          padding: '2rem 0',
          display: 'flex',
@@ -35,7 +35,7 @@ export const model = [
       alt: 'Это картинка'
    }),
 
-   new Block('columns', [
+   new ColumnsBlock([
       'ООП',
       'DOM',
       'Parcel',
