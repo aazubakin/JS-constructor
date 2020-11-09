@@ -119,6 +119,25 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"assets/1.png":[function(require,module,exports) {
 module.exports = "/1.9be96cb3.png";
+},{}],"classes/blocks.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Block = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Block = function Block(type, value, options) {
+  _classCallCheck(this, Block);
+
+  this.type = type;
+  this.value = value;
+  this.options = options;
+};
+
+exports.Block = Block;
 },{}],"model.js":[function(require,module,exports) {
 "use strict";
 
@@ -129,61 +148,48 @@ exports.model = void 0;
 
 var _ = _interopRequireDefault(require("./assets/1.png"));
 
+var _blocks = require("./classes/blocks");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var model = [{
-  type: 'title',
-  value: 'Конструктор сайтов на чистом JavaScript',
-  options: {
-    tag: 'h2',
-    styles: {
-      background: 'linear-gradient(to right, #ff0099, #493240)',
-      color: '#fff',
-      padding: '50px 0',
-      'text-align': 'center'
-    }
+var text = 'Создание сайта на чистом JS с использованием сборщика Parcel, <br> создание разметки стилей с помощью объектной модели';
+var model = [new _blocks.Block('title', 'Конструктор сайтов на чистом JavaScript', {
+  tag: 'h2',
+  styles: {
+    background: 'linear-gradient(to right, #ff0099, #493240)',
+    color: '#fff',
+    padding: '50px 0',
+    'text-align': 'center'
   }
-}, {
-  type: 'text',
-  value: 'Создание сайта на чистом JS с использованием сборщика Parcel, <br> создание разметки стилей с помощью объектной модели',
-  options: {
-    styles: {
-      background: 'linear-gradient(to right, #ff0099, #693290)',
-      color: '#fff',
-      padding: '1rem',
-      'font-weight': 'bold',
-      'font-size': '18px'
-    }
+}), new _blocks.Block('text', text, {
+  styles: {
+    background: 'linear-gradient(to right, #ff0099, #693290)',
+    color: '#fff',
+    padding: '1rem',
+    'font-weight': 'bold',
+    'font-size': '18px'
   }
-}, {
-  type: 'image',
-  value: _.default,
-  options: {
-    styles: {
-      padding: '2rem 0',
-      display: 'flex',
-      'justify-content': 'center'
-    },
-    imageStyles: {
-      width: '50%'
-    },
-    alt: 'Это картинка'
+}), new _blocks.Block('image', _.default, {
+  styles: {
+    padding: '2rem 0',
+    display: 'flex',
+    'justify-content': 'center'
+  },
+  imageStyles: {
+    width: '50%'
+  },
+  alt: 'Это картинка'
+}), new _blocks.Block('columns', ['ООП', 'DOM', 'Parcel', 'Classes', 'Modules', 'SOLID open-close'], {
+  styles: {
+    background: 'linear-gradient(to bottom, #8b2de8, #9b70e0)',
+    color: '#fff',
+    padding: '1rem',
+    'font-weight': 'bold',
+    'font-size': '18px'
   }
-}, {
-  type: 'columns',
-  value: ['ООП', 'DOM', 'Parcel', 'Classes', 'Modules'],
-  options: {
-    styles: {
-      background: 'linear-gradient(to bottom, #8b2de8, #9b70e0)',
-      color: '#fff',
-      padding: '1rem',
-      'font-weight': 'bold',
-      'font-size': '18px'
-    }
-  }
-}];
+})];
 exports.model = model;
-},{"./assets/1.png":"assets/1.png"}],"utils.js":[function(require,module,exports) {
+},{"./assets/1.png":"assets/1.png","./classes/blocks":"classes/blocks.js"}],"utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -374,7 +380,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "21709" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "24198" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
